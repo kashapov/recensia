@@ -101,15 +101,21 @@ function App() {
   //   };
   // };
   ///////
+  const [title, setTitle] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState('');
   const [loading, setLoading] = useState(false);
   const [webSocket, setWebSocket] = useState(null);
-
+  let i = 0;
   const handleWebSocketMessage = (event) => {
     setLoading(false);
-    console.log('Received WebSocket message:', event.data);
-    setSearchResults(prevResults => prevResults + ' ' + event.data); // Concatenate received word to existing results
+    if (i === 0) {
+      setTitle(event.data)
+    }
+    // console.log(i, event.data)
+    i++;
+    // console.log('Received WebSocket message:', event.data);
+    setSearchResults(prevResults => prevResults + '' + event.data); // Concatenate received word to existing results
   };
 
   const handleWebSocketError = (error) => {
@@ -151,8 +157,8 @@ function App() {
       {/*{loading ? (*/}
       {/*  <Spin size="large" />*/}
       {/*) : (*/}
-        <Card style={{ width: '800px', textAlign: 'left' }}>
-          <p style={{margin: 0}}>{loading ? <Spin style={{ width: '100%' }} size="large" /> : !searchResults ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : searchResults}</p>
+        <Card title={title} style={{ width: '800px', textAlign: 'left' }}>
+          <pre style={{margin: 0, whiteSpace: 'pre-wrap', fontSize: 'medium' }}>{loading ? <Spin style={{ width: '100%' }} size="large" /> : !searchResults ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : searchResults}</pre>
           {/*<List*/}
           {/*  dataSource={searchResults}*/}
           {/*  renderItem={item => (*/}
