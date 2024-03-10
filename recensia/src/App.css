@@ -6,6 +6,16 @@
   text-align: center;
 }
 
+h1 {
+  /* Set background to a linear gradient */
+  background: linear-gradient(to bottom, #01CFFF, #E789FF);
+  /* Set background clip to text so gradient only applies to text */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Transparent text color to allow gradient to show through */
+  color: transparent;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

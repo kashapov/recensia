@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css'
-import {Input, List, Spin} from "antd";
+import {Input, List, Space, Spin} from "antd";
 import axios from "axios";
 
 const { Search } = Input;
@@ -27,13 +27,14 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <Space size={16} direction={"vertical"} className="app-container">
       <h1>Recensia</h1>
       <Search
         placeholder="input search text"
         onSearch={onSearch}
-        style={{ width: 200 }}
-        enterButton
+        style={{ width: 600 }}
+        size="large"
+        // enterButton
       />
       {loading ? (
         <Spin size="large" />
@@ -45,7 +46,7 @@ function App() {
           )}
         />
       )}
-    </div>
+    </Space>
   );
 }
 
