@@ -111,11 +111,11 @@ function App() {
     setLoading(false);
     if (i === 0) {
       setTitle(event.data)
+    } else {
+      setSearchResults(prevResults => prevResults + '' + event.data); // Concatenate received word to existing results
     }
-    // console.log(i, event.data)
     i++;
     // console.log('Received WebSocket message:', event.data);
-    setSearchResults(prevResults => prevResults + '' + event.data); // Concatenate received word to existing results
   };
 
   const handleWebSocketError = (error) => {
